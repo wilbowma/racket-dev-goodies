@@ -13,12 +13,12 @@ OLDBUILDDIR="$PLTHOME/src/build"
 if [[ -d "$PLTHOME/pkgs" ]]; then
    rm -rf "$BUILDDIR"
    pushd "$PLTHOME"
-   CPPFLAGS=-I/opt/local/include make
+   CPPFLAGS+=" -I/opt/local/include" make
    popd
 else
    rm -rf "$OLDBUILDDIR"
    mkdir "$OLDBUILDDIR"
    pushd "$OLDBUILDDIR"
-   CPPFLAGS=-I/opt/local/include ../configure && make -j2 && make install
+   CPPFLAGS+=" -I/opt/local/include" ../configure && make -j2 && make install
    popd
 fi
